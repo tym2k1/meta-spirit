@@ -1,0 +1,17 @@
+header:
+  version: 9
+
+distro: poky
+
+machine: raspberrypi5
+
+repos:
+  poky:
+    url: https://git.yoctoproject.org/git/poky
+    commit: 6400741e0c11d1620a5ebe394d24deec295236f9
+    layers:
+      meta:
+      meta-poky:
+  meta-raspberrypi:
+    url: https://git.yoctoproject.org/git/meta-raspberrypi
+    commit: aaf976a665daa7e520545908adef8a0e9410b57f
