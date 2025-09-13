@@ -1,11 +1,10 @@
 header:
   version: 9
 
-distro: poky
-
 machine: raspberrypi5
 
 repos:
+  meta-spirit:
   poky:
     url: https://git.yoctoproject.org/git/poky
     commit: 6400741e0c11d1620a5ebe394d24deec295236f9

@@ -1,0 +1,6 @@
+header:
+  version: 9
+  includes:
+    - kas/common.yml
+
+distro: spirit_os

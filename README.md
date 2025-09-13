@@ -15,10 +15,15 @@ It uses [`kas`](https://github.com/siemens/kas) to simplify setup and building.
 Clone this repository, then go **one directory up** before building.
 (`kas` will create the actual build directory there and fetch other layers automatically.)
 
+
+Currently two targets are present:
+- `dev.yml` – A development image with features such as serial/UART enabled aimed for debugging and development purposes.
+- `prod.yml` – A reference production image with development features disabled.
+
 To build run the command:
 
 ```sh
-kas-container build meta-spirit/kas.yml
+kas-container build meta-spirit/dev.yml
 ```
 
 The first build can take hours on a personal computer/laptop.
@@ -28,7 +33,7 @@ To limit CPU usage (example: 4 cores):
 ```sh
 export BB_NUMBER_THREADS=4
 export PARALLEL_MAKE="-j4"
-kas-container build meta-spirit/kas.yml
+kas-container build meta-spirit/dev.yml
 ```
 
 ### Troubleshooting
@@ -75,7 +80,7 @@ utility needs to be used to put the eMMC into flash mode.
         # build the container
         $ docker build -t rpiboot meta-spirit/scripts/rpiboot
 
-        # run it with --privileged and passing the peripherals. Below is an example correct output
+        # run it with --privileged and passing the peripherals. Sometimes needs to be ran twice. Below is an example correct output
         $ docker run --rm -it --init \
             --privileged \
             --device /dev:/dev \
@@ -107,8 +112,9 @@ utility needs to be used to put the eMMC into flash mode.
         ```
 1. Copy the image to the eMMC.
     ```sh
-    $ bmaptool copy build/tmp/deploy/images/raspberrypi5/core-image-minimal-raspberrypi5.rootfs.wic.bz2 /dev/sdX
+    $ bmaptool copy build/tmp-glibc/deploy/images/raspberrypi5/core-image-minimal-raspberrypi5.rootfs.wic.bz2 /dev/sdX
     bmaptool: info: discovered bmap file 'build/tmp/deploy/images/raspberrypi5/core-image-minimal-raspberrypi5.rootfs.wic.bmap'
+    bmaptool: info: discovered bmap file 'build/tmp-glibc/deploy/images/raspberrypi5/core-image-minimal-raspberrypi5.rootfs.wic.bmap'
     bmaptool: info: block map format version 2.0
     bmaptool: info: 43707 blocks of size 4096 (170.7 MiB), mapped 16919 blocks (66.1 MiB or 38.7%)
     bmaptool: info: copying image 'core-image-minimal-raspberrypi5.rootfs.wic.bz2' to block device '/dev/sda' using bmap file 'core-image-minimal-raspberrypi5.rootfs.wic.bmap'
@@ -121,11 +127,11 @@ utility needs to be used to put the eMMC into flash mode.
 
 ### SD card
 
-1. Plug your microSD card into your host. Make sure it's unmounted before proceeding
+1. Plug your microSD card into your host. Make sure it's unmounted before proceeding.
 1. Copy the image to the microSD.
     ```sh
-    $ bmaptool copy build/tmp/deploy/images/raspberrypi5/core-image-minimal-raspberrypi5.rootfs.wic.bz2 /dev/sdX
-    bmaptool: info: discovered bmap file 'build/tmp/deploy/images/raspberrypi5/core-image-minimal-raspberrypi5.rootfs.wic.bmap'
+    $ bmaptool copy build/tmp-glibc/deploy/images/raspberrypi5/core-image-minimal-raspberrypi5.rootfs.wic.bz2 /dev/sdX
+    bmaptool: info: discovered bmap file 'build/tmp-glibc/deploy/images/raspberrypi5/core-image-minimal-raspberrypi5.rootfs.wic.bmap'
     bmaptool: info: block map format version 2.0
     bmaptool: info: 43707 blocks of size 4096 (170.7 MiB), mapped 16919 blocks (66.1 MiB or 38.7%)
     bmaptool: info: copying image 'core-image-minimal-raspberrypi5.rootfs.wic.bz2' to block device '/dev/sda' using bmap file 'core-image-minimal-raspberrypi5.rootfs.wic.bmap'
