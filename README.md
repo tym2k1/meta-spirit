@@ -31,7 +31,6 @@ export PARALLEL_MAKE="-j4"
 kas-container build meta-spirit/kas.yml
 ```
 
-
 ### Troubleshooting
 
 Most errors aren’t scary. If a recipe fails, just clean it and rebuild.
@@ -61,6 +60,8 @@ When in doubt refer to
 or open an issue.
 
 ## Flash
+
+### eMMC
 
 To flash the eMMC on the IO Board the
 [`rpiboot`](https://github.com/raspberrypi/usbboot?tab=readme-ov-file#troubleshooting)
@@ -117,3 +118,19 @@ utility needs to be used to put the eMMC into flash mode.
     ```
 1. Remove the jumper from the `EMMC-DISABLE / nRPIBOOT (BCM2712 GPIO 20)`.
 1. Power cycle the device.
+
+### SD card
+
+1. Plug your microSD card into your host. Make sure it's unmounted before proceeding
+1. Copy the image to the microSD.
+    ```sh
+    $ bmaptool copy build/tmp/deploy/images/raspberrypi5/core-image-minimal-raspberrypi5.rootfs.wic.bz2 /dev/sdX
+    bmaptool: info: discovered bmap file 'build/tmp/deploy/images/raspberrypi5/core-image-minimal-raspberrypi5.rootfs.wic.bmap'
+    bmaptool: info: block map format version 2.0
+    bmaptool: info: 43707 blocks of size 4096 (170.7 MiB), mapped 16919 blocks (66.1 MiB or 38.7%)
+    bmaptool: info: copying image 'core-image-minimal-raspberrypi5.rootfs.wic.bz2' to block device '/dev/sda' using bmap file 'core-image-minimal-raspberrypi5.rootfs.wic.bmap'
+    bmaptool: info: 100% copied
+    bmaptool: info: synchronizing '/dev/sda'
+    bmaptool: info: copying time: 3.0s, copying speed 22.0 MiB/sec
+    ```
+1. Plug the microSD into the device and power cycle it.
