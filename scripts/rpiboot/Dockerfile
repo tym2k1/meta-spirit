@@ -10,7 +10,8 @@ RUN apt-get update && \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src
-RUN git clone --depth=1 https://github.com/raspberrypi/usbboot.git
+# last release as of 14.09.2025
+RUN git clone --branch 20250908-162618 --depth=1 https://github.com/raspberrypi/usbboot.git
 WORKDIR /usr/src/usbboot
 RUN make && cp rpiboot /usr/local/bin/
 RUN cp -r /usr/src/usbboot /usr/share/rpiboot
