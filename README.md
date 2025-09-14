@@ -4,6 +4,30 @@ This repo aims to act as a reference build setup for the
 [SPIRIT phone](https://github.com/V3lectronics/SPIRIT).
 It uses [`kas`](https://github.com/siemens/kas) to simplify setup and building.
 
+## Motivation
+
+Most discussion around Operating System choice for a project quickly drifts into
+the **userland** (desktop environments, init systems, apps).
+That is important but the foundation is always the same:
+- a working **Linux kernel**
+- the right **device tree** describing the hardware
+- firmware, bootloader, and low-level integration
+
+This repo exists to focus on that **base system**.
+
+- **Reproducibility** - same kernel/device tree build every time, across hosts.
+- **Portability** - the kernel and DTBs built here can be used by other distributions
+  (Mobian, Ubuntu Touch, Arch ARM, etc.).
+- **Customizability** - we can maintain multiple targets,
+  tweak device trees, or patch the kernel for SPIRIT’s custom hardware.
+- **Reference BSP** - this layer documents exactly what’s needed to boot
+  the SPIRIT phone, making it easier for other projects to bring up support for SPIRIT.
+- **Testing ground** - a minimal base to validate peripherals,
+  benchmark performance and measure battery life.
+
+In other words this is not a "phone OS" but a **hardware enablement layer**
+that ensures Linux distributions can work at all on SPIRIT.
+
 ## Requirements
 - Linux host (or WSL2 on Windows / Docker Desktop on macOS)
 - Docker or Podman installed
