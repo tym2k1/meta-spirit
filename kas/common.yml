@@ -1,7 +1,7 @@
 header:
   version: 9
 
-machine: raspberrypi5
+machine: spirit-phone-cm5
 
 repos:
   meta-spirit:

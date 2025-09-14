@@ -3,4 +3,4 @@ header:
   includes:
     - kas/common.yml
 
-distro: spirit_os
+distro: spirit-os
