@@ -1,0 +1,14 @@
+--- a/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts
++++ b/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts
+@@ -28,6 +28,8 @@
+ 
+ #include "bcm2712.dtsi"
+ 
++#include "spirit-phone-cm5.dtsi"
++
+ #undef i2c0
+ #undef i2c3
+ #undef i2c4
+-- 
+2.39.2
+

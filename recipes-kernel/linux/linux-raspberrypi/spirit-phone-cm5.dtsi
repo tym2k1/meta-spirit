@@ -1,0 +1,10 @@
+/ {
+    my-custom-leds {
+        compatible = "gpio-leds";
+        testled0 {
+            gpios = <&gpio 21 0>;
+            default-state = "off";
+            label = "test-led0";
+        };
+    };
+};

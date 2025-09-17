@@ -136,7 +136,7 @@ utility needs to be used to put the eMMC into flash mode.
         ```
 1. Copy the image to the eMMC.
     ```sh
-    $ bmaptool copy build/tmp-glibc/deploy/images/raspberrypi5/core-image-minimal-raspberrypi5.rootfs.wic.bz2 /dev/sdX
+    $ bmaptool copy build/tmp-glibc/deploy/images/spirit-phone-cm5/core-image-minimal-spirit-phone-cm5.rootfs.wic.bz2 /dev/sdX
     bmaptool: info: discovered bmap file 'build/tmp/deploy/images/raspberrypi5/core-image-minimal-raspberrypi5.rootfs.wic.bmap'
     bmaptool: info: discovered bmap file 'build/tmp-glibc/deploy/images/raspberrypi5/core-image-minimal-raspberrypi5.rootfs.wic.bmap'
     bmaptool: info: block map format version 2.0
@@ -154,7 +154,7 @@ utility needs to be used to put the eMMC into flash mode.
 1. Plug your microSD card into your host. Make sure it's unmounted before proceeding.
 1. Copy the image to the microSD.
     ```sh
-    $ bmaptool copy build/tmp-glibc/deploy/images/raspberrypi5/core-image-minimal-raspberrypi5.rootfs.wic.bz2 /dev/sdX
+    $ bmaptool copy build/tmp-glibc/deploy/images/spirit-phone-cm5/core-image-minimal-spirit-phone-cm5.rootfs.wic.bz2 /dev/sdX
     bmaptool: info: discovered bmap file 'build/tmp-glibc/deploy/images/raspberrypi5/core-image-minimal-raspberrypi5.rootfs.wic.bmap'
     bmaptool: info: block map format version 2.0
     bmaptool: info: 43707 blocks of size 4096 (170.7 MiB), mapped 16919 blocks (66.1 MiB or 38.7%)
