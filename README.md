@@ -39,16 +39,27 @@ that ensures Linux distributions can work at all on SPIRIT.
 Clone this repository, then go **one directory up** before building.
 (`kas` will create the actual build directory there and fetch other layers automatically.)
 
-
-Currently two targets are present:
-- `dev.yml` – A development image with features such as serial/UART enabled aimed for debugging and development purposes.
-- `prod.yml` – A reference production image with development features disabled.
-
-To build run the command:
+By default the build targets QEMU (ARM64 / AArch64)
 
 ```sh
-kas-container build meta-spirit/dev.yml
+kas-container build meta-spirit/kas.yml
 ```
+
+For different targets parse additional overlays.
+
+```sh
+kas-container build meta-spirit/kas.yml:<path to overlay 1>:<path to overlay 2>
+```
+
+### Available kas overlays
+
+| File / Feature                    | Path                                           | Description                                                                 |
+|-----------------------------------|------------------------------------------------|-----------------------------------------------------------------------------|
+| **Development Image** (`dev.yml`) | [`kas/distro/dev.yml`](./kas/distro/dev.yml)   | Enables development settings (e.g. UART/serial console, debugging tools).   |
+| **CM5 Machine** (`cm5.yml`)       | [`kas/machine/cm5.yml`](./kas/machine/cm5.yml) | Targets the Raspberry Pi CM5–based smartphone hardware.                     |
+
+
+### Resource-usage
 
 The first build can take hours on a personal computer/laptop.
 

@@ -1,8 +1,6 @@
 header:
   version: 9
-
-machine: spirit-phone-cm5
-
+  
 repos:
   meta-spirit:
   poky:
@@ -14,3 +12,8 @@ repos:
   meta-raspberrypi:
     url: https://git.yoctoproject.org/git/meta-raspberrypi
     commit: aaf976a665daa7e520545908adef8a0e9410b57f
+
+local_conf_header:
+  standard: |
+    MACHINE ?= "qemuarm64"
+    DISTRO  ?= "spirit-os"
