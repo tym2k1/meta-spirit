@@ -1,0 +1,69 @@
+# Submenu for selecting MACHINE
+menu "Select MACHINE"
+
+choice
+    prompt "Choose your target machine"
+    default KCONF_MACHINE_CM5
+    help
+      Pick the machine hardware configuration for the build.
+
+config KCONF_MACHINE_CM5
+    bool "spirit-phone-cm5"
+    help
+      Build for the Spirit Phone CM5 device.
+
+config KCONF_MACHINE_QEMU
+    bool "qemuarm64"
+    help
+      Build for the QEMU ARM64 emulator.
+
+endchoice
+endmenu  # end MACHINE submenu
+
+# Submenu for selecting DISTRO
+menu "Select DISTRO"
+
+choice
+    prompt "Choose your target distro"
+    default KCONF_DISTRO_SPIRIT
+    help
+      Select the Yocto distribution configuration to use.
+
+config KCONF_DISTRO_SPIRIT
+    bool "spirit-os"
+    help
+      Standard Spirit OS distribution.
+
+config KCONF_DISTRO_SPIRIT_DEV
+    bool "spirit-os-dev"
+    help
+      Development variant of Spirit OS.
+
+endchoice
+endmenu  # end DISTRO submenu
+
+menu "Settings Overview"
+
+config KAS_INCLUDE_COMMON
+    string "Always include this kas file"
+    default "/repo/kas.yml"
+    help
+      This file is automatically included in the kas build.
+      It contains essential base configuration.
+      Don't change unless you know what you're doing.
+
+config MACHINE
+    string "Selected MACHINE"
+    default "spirit-phone-cm5" if KCONF_MACHINE_CM5
+    default "qemuarm64" if KCONF_MACHINE_QEMU
+	help
+	  The end MACHINE value.
+
+config DISTRO
+    string "Selected DISTRO"
+    default "spirit-os" if KCONF_DISTRO_SPIRIT
+    default "spirit-os-dev" if KCONF_DISTRO_SPIRIT_DEV
+	help
+	  The end DISTRO value.
+
+endmenu

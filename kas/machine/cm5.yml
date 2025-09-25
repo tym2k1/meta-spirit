@@ -1,6 +1,0 @@
-header:
-  version: 9
-
-local_conf_header:
-  standard: |
-    MACHINE = "spirit-phone-cm5"
