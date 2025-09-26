@@ -104,9 +104,42 @@ When in doubt refer to
 [Yocto Project Documentation](https://docs.yoctoproject.org/5.0.12/singleindex.html)
 or open an issue.
 
-## Flash
+## Running
 
-### eMMC
+### QEMU - `qemuarm64`
+
+> **Note**
+> QEMU is run *inside* the build container to ensure it uses the
+> exact `qemu-system-native` binary and libraries that Yocto built.
+> This avoids host dependency issues and guarantees a reproducible
+> runtime environment. The built artifacts can still be ran with reqular
+> `qemu-system-aarch64`.
+
+#### Serial
+
+```sh
+kas-container shell
+
+# From inside the container
+runqemu slirp serialstdio
+```
+#### Graphical
+
+```sh
+kas-container --runtime-args "-p 5900:5900" shell
+
+# From inside the container
+runqemu slirp publicvnc
+
+# Now on your host
+vncviewer localhost:5900
+```
+
+This can be combined with `serialstdio` to get early boot messages.
+
+### CM5 - `spirit-phone-cm5`
+
+#### eMMC
 
 To flash the eMMC on the IO Board the
 [`rpiboot`](https://github.com/raspberrypi/usbboot?tab=readme-ov-file#troubleshooting)
@@ -165,7 +198,7 @@ utility needs to be used to put the eMMC into flash mode.
 1. Remove the jumper from the `EMMC-DISABLE / nRPIBOOT (BCM2712 GPIO 20)`.
 1. Power cycle the device.
 
-### SD card
+#### SD card
 
 1. Plug your microSD card into your host. Make sure it's unmounted before proceeding.
 1. Copy the image to the microSD.
