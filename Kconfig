@@ -34,13 +34,20 @@ config KCONF_DISTRO_SPIRIT
     help
       Standard Spirit OS distribution.
 
-config KCONF_DISTRO_SPIRIT_DEV
-    bool "spirit-os-dev"
-    help
-      Development variant of Spirit OS.
-
 endchoice
 endmenu  # end DISTRO submenu
+
+menu "Features"
+
+config KCONF_FEATURE_DEV_MODE
+    bool "Enable Development Features (serial, empty root password)"
+    help
+      Enable debug/development options in the build:
+        - Serial console
+        - Empty root password
+      Leave disabled for production images.
+
+endmenu  # end Features submenu
 
 menu "Settings Overview"
 
@@ -62,8 +69,15 @@ config MACHINE
 config DISTRO
     string "Selected DISTRO"
     default "spirit-os" if KCONF_DISTRO_SPIRIT
-    default "spirit-os-dev" if KCONF_DISTRO_SPIRIT_DEV
 	help
 	  The end DISTRO value.
+
+config SPIRIT_DEV_MODE
+    string "Development Mode flag"
+    default "1" if KCONF_FEATURE_DEV_MODE
+    default "0"
+    help
+      This variable will be passed to the Yocto build to enable or disable
+      development features in recipes and configuration.
 
 endmenu
