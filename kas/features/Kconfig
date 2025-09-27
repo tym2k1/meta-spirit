@@ -1,0 +1,16 @@
+menu "Features"
+
+config KCONF_FEATURE_DEV_MODE
+    bool "Enable Development Features (serial, empty root password)"
+    help
+      Enable debug/development options in the build:
+        - Serial console
+        - Empty root password
+      Leave disabled for production images.
+
+endmenu  # end Features submenu
+
+config SPIRIT_DEV_MODE
+    string
+    default "1" if KCONF_FEATURE_DEV_MODE
+    default "0"

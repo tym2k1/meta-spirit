@@ -1,0 +1,27 @@
+# Submenu for selecting MACHINE
+menu "Select MACHINE"
+
+choice
+    prompt "Choose your target machine"
+    default KCONF_MACHINE_CM5
+    help
+      Pick the machine hardware configuration for the build.
+
+config KCONF_MACHINE_CM5
+    bool "spirit-phone-cm5"
+    help
+      Build for the Spirit Phone CM5 device.
+
+config KCONF_MACHINE_QEMU
+    bool "qemuarm64"
+    help
+      Build for the QEMU ARM64 emulator.
+
+endchoice
+
+config MACHINE
+    string
+    default "spirit-phone-cm5" if KCONF_MACHINE_CM5
+    default "qemuarm64" if KCONF_MACHINE_QEMU
+
+endmenu
