@@ -1,14 +1,25 @@
 header:
   version: 9
- 
+
 repos:
   meta-spirit:
   poky:
     url: https://git.yoctoproject.org/git/poky
-    commit: 6400741e0c11d1620a5ebe394d24deec295236f9
+    commit: d0b46a6624ec9c61c47270745dd0b2d5abbe6ac1
     layers:
       meta:
       meta-poky:
   meta-raspberrypi:
     url: https://git.yoctoproject.org/git/meta-raspberrypi
-    commit: aaf976a665daa7e520545908adef8a0e9410b57f
+    commit: 5c540d5447fba8b652c8778af30e605242df650c
+  meta-openembedded:
+    url: https://git.openembedded.org/meta-openembedded
+    commit: 80ab58cc404959ae2f0e8b2e68935b3bfd8e8cfe
+    layers:
+      meta-oe:
+      meta-networking:
+      meta-python:
+      meta-gnome:
+  meta-wayland:
+    url: https://codeberg.org/flk/meta-wayland.git
+    commit: 9a9fa8e1aac7418a8a941d33ec00b595b2f6a007

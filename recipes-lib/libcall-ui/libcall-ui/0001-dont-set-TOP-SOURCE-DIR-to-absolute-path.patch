@@ -1,0 +1,25 @@
+From 591aed7c6fdb1a5237f90a01ede368bff41670e9 Mon Sep 17 00:00:00 2001
+From: kas User <kas@example.com>
+Date: Sun, 28 Sep 2025 16:59:35 +0200
+Subject: [PATCH] Dont set TOP_SOURCE_DIR to absolute path
+Upstream-Status: Pending
+
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 5533362..50fe537 100644
+--- a/meson.build
++++ b/meson.build
+@@ -87,7 +87,7 @@ libcallaudio_dep = dependency('libcallaudio-0.1')
+ config_h = configuration_data()
+ config_h.set_quoted('GETTEXT_PACKAGE', 'call-ui')
+ config_h.set_quoted('LOCALEDIR', localedir)
+-config_h.set_quoted('TOP_SOURCE_DIR', meson.current_source_dir())
++config_h.set_quoted('TOP_SOURCE_DIR', '')
+ 
+ configure_file(
+   input: 'cui-config.h.in',
+-- 
+2.39.5

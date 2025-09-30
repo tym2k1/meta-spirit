@@ -8,9 +8,19 @@ config KCONF_FEATURE_DEV_MODE
         - Empty root password
       Leave disabled for production images.
 
+config KCONF_FEATURE_PHOSH
+    bool "Enable Phosh"
+    help
+      Enable Phosh Desktop Environment
+
 endmenu  # end Features submenu
 
 config SPIRIT_DEV_MODE
     string
     default "1" if KCONF_FEATURE_DEV_MODE
+    default "0"
+
+config SPIRIT_PHOSH
+    string
+    default "1" if KCONF_FEATURE_PHOSH
     default "0"
