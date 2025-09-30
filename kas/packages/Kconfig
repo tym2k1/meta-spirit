@@ -1,0 +1,9 @@
+menu "Packages selection"
+
+config KCONF_RUNTIME_PACKAGES
+	string "Runtime packages"
+	default "vim"
+	help
+	  Space-separated list of packages that will be appended to the IMAGE_INSTALL variable.
+
+endmenu

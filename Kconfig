@@ -9,4 +9,5 @@ config KAS_INCLUDE_COMMON
 
 source "kas/machine/Kconfig"
 source "kas/distro/Kconfig"
+source "kas/packages/Kconfig"
 source "kas/features/Kconfig"
